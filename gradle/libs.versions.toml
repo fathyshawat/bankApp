@@ -1,0 +1,116 @@
+[versions]
+# Gradle Plugins
+androidGradlePlugin = "8.1.1"
+kotlin = "1.9.10"
+kotlinPlugin = "1.6.10"
+ktLint = "11.5.1"
+secretsGradlePlugin = "2.0.1"
+
+
+# Support
+appcompat = "1.6.1"
+coreKtx = "1.12.0"
+supportVersion = "1.0.0"
+
+# Arch Components
+lifecycle = "2.7.0"
+worker = "2.9.0"
+workerHilt = "1.1.0"
+
+# Kotlin Coroutines
+kotlinCoroutines = "1.7.1"
+
+# Networking
+retrofit = "2.9.0"
+gson = "2.10.1"
+interceptor = "4.10.0"
+chucker = "3.5.2"
+
+# UI
+materialDesign = "1.11.0"
+constraintlayout = "2.1.4"
+androidNavigation = "2.7.2"
+alerter = "7.2.4"
+picasso = "2.8"
+
+# Hilt
+hiltVersion = "2.49"
+
+# Utils
+sentryAndroid = "6.23.0"
+multidex = "2.0.1"
+preference = "1.2.1"
+apacheCommons = "3.12.0"
+junit = "4.13.2"
+androidx-test-ext-junit = "1.1.5"
+espresso-core = "3.5.1"
+proguard = "8.2.42"
+
+
+[libraries]
+# Support
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+coreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+androidSupport = { module = "androidx.legacy:legacy-support-v4", version.ref = "supportVersion" }
+
+# Kotlin
+kotlin = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+coroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutines" }
+coroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
+
+# Arch Components
+viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifeData = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+viewModelState = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
+androidWorker = { module = "androidx.work:work-runtime-ktx", version.ref = "worker" }
+hiltWorker = { module = "androidx.hilt:hilt-work", version.ref = "workerHilt" }
+
+# Networking
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+gsonConverter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "interceptor" }
+
+# UI
+materialDesign = { module = "com.google.android.material:material", version.ref = "materialDesign" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+navigationFragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidNavigation" }
+navigationUI = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidNavigation" }
+safeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidNavigation" }
+r8 = { module = "com.android.tools:r8" , version.ref = "proguard" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+
+# Hilt
+hilt = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
+hiltDaggerCompiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltVersion" }
+
+# Utils
+multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
+preference = { module = "androidx.preference:preference", version.ref = "preference" }
+apacheCommons = { module = "org.apache.commons:commons-lang3", version.ref = "apacheCommons" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+
+
+
+
+[bundles]
+archComponents = ["viewModel", "lifeData", "lifecycle", "viewModelState"]
+networking = ["retrofit", "interceptor", "gson", "gsonConverter"]
+navigationComponent = ["navigationFragment", "navigationUI"]
+kotlinCoroutines = ["coroutinesCore", "coroutinesAndroid"]
+
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-plugin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref = "androidNavigation" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktLint" }
