@@ -17,3 +17,4 @@ rootProject.name = "My Application"
 include(":app")
 include(":network")
 include(":ui")
+include(":feature-currency")

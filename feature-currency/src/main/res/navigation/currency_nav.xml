@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/currency_nav"
+    app:startDestination="@id/converterFragment">
+
+
+    <fragment
+        android:id="@+id/converterFragment"
+        android:label="fragment_souhoola_qr_code"
+        tools:layout="@layout/converter_fragment"
+        >
+        <action
+            android:id="@+id/openHistoryFragment"
+            app:destination="@id/HistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/HistoryFragment"
+        android:label="fragment_souhoola_v3_pending_requests" >
+
+    </fragment>
+</navigation>

@@ -1,7 +1,6 @@
-@file:Suppress("UnstableApiUsage", "DSL_SCOPE_VIOLATION")
-
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.plugin)
     alias(libs.plugins.kapt)
     alias(libs.plugins.hilt)
@@ -10,19 +9,12 @@ plugins {
 
 android {
     namespace = "com.bank.currency"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
-        namespace = "com.bank.currency"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -41,20 +33,27 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-
-
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
+    buildFeatures {
+        dataBinding = true
     }
 }
 
 dependencies {
-    // Hilt
+
+    implementation(libs.coreKtx)
+    implementation(libs.appcompat)
+    implementation(libs.materialDesign)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    implementation(libs.bundles.navigationComponent)
+    //Hilt
     implementation(libs.hilt)
     kapt(libs.hiltDaggerCompiler)
+    // Arch Components
+    implementation(libs.bundles.archComponents)
+    // Kotlin Coroutines
+    implementation(libs.bundles.kotlinCoroutines)
+    implementation(project(":network"))
 
-    implementation(project(":ui"))
-    implementation(project(":feature-currency"))
 }
