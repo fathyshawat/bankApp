@@ -8,7 +8,7 @@ data class GeneralNetworkModel(
 )
 
 class ErrorDataModel(
-    @SerializedName("message")
+    @SerializedName("info")
     val message: String? = null,
     @SerializedName("code")
     val txnResponseCode: String? = null,

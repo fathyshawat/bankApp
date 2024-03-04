@@ -4,11 +4,10 @@ plugins {
     alias(libs.plugins.kotlin.plugin)
     alias(libs.plugins.kapt)
     alias(libs.plugins.hilt)
-    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
-    namespace = "com.bank.currency"
+    namespace = "com.bank.currency.utils"
     compileSdk = 34
 
     defaultConfig {
@@ -33,30 +32,15 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    buildFeatures {
-        dataBinding = true
-        viewBinding = true
-    }
 }
 
 dependencies {
 
     implementation(libs.coreKtx)
-    implementation(libs.appcompat)
-    implementation(libs.materialDesign)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    //Navigation
-    implementation(libs.bundles.navigationComponent)
     //Hilt
     implementation(libs.hilt)
     kapt(libs.hiltDaggerCompiler)
-    // Arch Components
-    implementation(libs.bundles.archComponents)
-    // Kotlin Coroutines
+    // Coroutines
     implementation(libs.bundles.kotlinCoroutines)
-    implementation(project(":network"))
-    implementation(project(":ui"))
-    implementation(project(":utils"))
 
 }

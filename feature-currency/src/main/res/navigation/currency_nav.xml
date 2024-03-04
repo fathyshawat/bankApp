@@ -8,16 +8,17 @@
 
     <fragment
         android:id="@+id/converterFragment"
-        android:label="fragment_souhoola_qr_code"
+        android:label="converter_fragment"
+        android:name="com.bank.currency.ConverterCurrencyFragment"
         tools:layout="@layout/converter_fragment"
         >
-        <action
-            android:id="@+id/openHistoryFragment"
-            app:destination="@id/HistoryFragment" />
+<!--        <action-->
+<!--            android:id="@+id/openHistoryFragment"-->
+<!--            app:destination="@id/HistoryFragment" />-->
     </fragment>
-    <fragment
-        android:id="@+id/HistoryFragment"
-        android:label="fragment_souhoola_v3_pending_requests" >
+<!--    <fragment-->
+<!--        android:id="@+id/HistoryFragment"-->
+<!--        android:label="fragment_souhoola_v3_pending_requests" >-->
 
-    </fragment>
+<!--    </fragment>-->
 </navigation>

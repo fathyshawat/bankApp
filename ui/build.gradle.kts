@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.plugin)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kapt)
+    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
@@ -27,6 +28,7 @@ android {
     }
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -35,4 +37,5 @@ dependencies {
     kapt(libs.hiltDaggerCompiler)
     implementation(libs.appcompat)
     implementation(libs.materialDesign)
+    implementation(libs.bundles.navigationComponent)
 }

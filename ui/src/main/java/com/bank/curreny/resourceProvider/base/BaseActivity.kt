@@ -1,9 +1,12 @@
-package com.bank.curreny.resourceProvider.resProvider.base
+package com.bank.curreny.resourceProvider.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseActivity<VB : ViewBinding>(val bindingFactory: (LayoutInflater) -> VB) :
@@ -11,6 +14,7 @@ abstract class BaseActivity<VB : ViewBinding>(val bindingFactory: (LayoutInflate
 
 
     private var _viewBinding: VB? = null
+    var navController: NavController? = null
 
     abstract fun onActivityCreated(savedInstanceState: Bundle?)
 
@@ -33,6 +37,22 @@ abstract class BaseActivity<VB : ViewBinding>(val bindingFactory: (LayoutInflate
         return _viewBinding!!
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        if (!(navController?.navigateUp() == true || super.onSupportNavigateUp())) {
+            onBackPressedDispatcher.onBackPressed()
+        }
+        return true
+    }
+
+    fun setUpNavController(navContainerId: Int, activity: AppCompatActivity) {
+        val navHostFragment = activity.supportFragmentManager.findFragmentById(
+            navContainerId
+        ) as NavHostFragment
+
+        navHostFragment.navController.apply {
+            navController = this
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/feature-currency" />
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/ui" />
+            <option value="$PROJECT_DIR$/utils" />
           </set>
         </option>
       </GradleProjectSettings>
