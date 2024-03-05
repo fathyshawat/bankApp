@@ -14,7 +14,7 @@ abstract class BaseFragment<VB : ViewBinding>(val bindingFactory: (LayoutInflate
     private var _viewBinding: VB? = null
 
 
-    private fun viewBinding(): VB {
+     fun viewBinding(): VB {
         if (_viewBinding == null) throw NullPointerException("viewBinding is null!!")
         return _viewBinding!!
     }

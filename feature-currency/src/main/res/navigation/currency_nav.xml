@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/converterFragment"
         android:label="converter_fragment"
-        android:name="com.bank.currency.ConverterCurrencyFragment"
+        android:name="com.bank.currency.presentation.ConverterCurrencyFragment"
         tools:layout="@layout/converter_fragment"
         >
 <!--        <action-->

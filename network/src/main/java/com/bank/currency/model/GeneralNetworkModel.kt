@@ -2,14 +2,19 @@ package com.bank.currency.model
 
 import com.google.gson.annotations.SerializedName
 
-data class GeneralNetworkModel(
-    @SerializedName("error")
-    val error: ErrorDataModel?
-)
+open class GeneralNetworkModel {
+    @SerializedName("success")
+    val success: Boolean? = null
 
-class ErrorDataModel(
-    @SerializedName("info")
-    val message: String? = null,
+    @SerializedName("error")
+    val error: Error? = null
+}
+
+class Error(
     @SerializedName("code")
-    val txnResponseCode: String? = null,
+    val code: Int? = null,
+    @SerializedName("type")
+    val type: String? = null,
+    @SerializedName("info")
+    val info: String? = null
 )

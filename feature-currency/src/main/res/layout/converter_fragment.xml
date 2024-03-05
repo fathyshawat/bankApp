@@ -2,22 +2,28 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/white"
+    android:padding="5dp"
     android:layout_height="match_parent">
 
     <Spinner
         android:id="@+id/spFrom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:ellipsize="end"
+        android:inputType="none"
+        android:background="@color/colorPrimary"
+        android:singleLine="true"
         android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toStartOf="@id/imgCurrency"
+        app:layout_constraintEnd_toStartOf="@id/imgExchange"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgCurrency"
+        android:id="@+id/imgExchange"
         android:padding="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/ic_converter"
         app:layout_constraintEnd_toStartOf="@id/spTo"
         app:layout_constraintStart_toEndOf="@id/spFrom"
@@ -25,11 +31,15 @@
 
     <Spinner
         android:id="@+id/spTo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:ellipsize="end"
+        android:inputType="none"
+        android:singleLine="true"
+        android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imgCurrency"
-        app:layout_constraintTop_toTopOf="@id/imgCurrency" />
+        app:layout_constraintStart_toEndOf="@id/imgExchange"
+        app:layout_constraintTop_toTopOf="@id/imgExchange" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -46,8 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="1:00"
-            android:inputType="number" />
+            android:inputType="numberDecimal"
+            android:text="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -58,6 +68,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:maxLines="1"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="@id/spTo"
         app:layout_constraintBottom_toBottomOf="@id/tvAmountFrom"
@@ -73,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="@string/details"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAmountTo" />

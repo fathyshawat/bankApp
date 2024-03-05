@@ -1,4 +1,4 @@
-package network
+package com.bank.currency.network
 
 sealed class Resource<out T> {
 
