@@ -10,6 +10,7 @@ import com.bank.currency.network.Resource
 import com.bank.curreny.resourceProvider.base.BaseFragment
 import com.bank.curreny.resourceProvider.extenstions.collect
 import com.bank.curreny.resourceProvider.extenstions.init
+import com.bank.curreny.resourceProvider.extenstions.navigateSafe
 import com.bank.curreny.resourceProvider.extenstions.showMessageDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -21,7 +22,6 @@ class ConverterCurrencyFragment :
     BaseFragment<ConverterFragmentBinding>(ConverterFragmentBinding::inflate) {
 
     private val viewModel: CurrencyViewModel by viewModels()
-
 
     override fun onFragmentCreated(view: View, savedInstanceState: Bundle?) {
         initViews()
@@ -39,6 +39,14 @@ class ConverterCurrencyFragment :
                     .convertAmountCurrency(
                         viewBinding().etAmountFrom.text.toString().toDoubleOrNull() ?: 0.0
                     ).toString()
+            }
+            btnDetails.setOnClickListener {
+                navigateSafe(
+                    ConverterCurrencyFragmentDirections.actionConverterFragmentToHistoryFragment(
+                        viewModel.ratingFromListKey[viewModel.fromCurrencyRatePos],
+                        viewModel.ratingToListKey[viewModel.toCurrencyRatePos]
+                    )
+                )
             }
         }
     }

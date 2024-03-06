@@ -6,6 +6,9 @@ import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.bank.curreny.ui.R
 import kotlinx.coroutines.flow.SharedFlow
 
@@ -26,3 +29,8 @@ fun Fragment.showMessageDialog(message: String) {
     builder.create().show()
 }
 
+fun Fragment.navigateSafe(directions: NavDirections, navOptions: NavOptions? = null) {
+    runCatching {
+        findNavController().navigate(directions, navOptions)
+    }
+}

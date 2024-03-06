@@ -21,8 +21,7 @@ import javax.inject.Inject
 class CurrencyViewModel @Inject constructor(
     private val ratingUseCase: RatingUseCase,
     private val iResourceProvider: IResourceProvider
-) :
-    BaseViewModel() {
+) : BaseViewModel() {
 
     private val _rateModel = MutableSharedFlow<Resource<RatingModel?>>()
     val rateModel: SharedFlow<Resource<RatingModel?>>
@@ -51,6 +50,9 @@ class CurrencyViewModel @Inject constructor(
             }.launchIn(viewModelScope)
     }
 
+
+
+
     fun spiltListCurrency(ratingList: List<Pair<String, Double>>? = null) {
         ratingList?.forEach { it ->
             ratingFromListKey.add(it.first)
@@ -58,17 +60,14 @@ class CurrencyViewModel @Inject constructor(
             ratingFromListValue.add(it.second)
             ratingToListValue.add(it.second)
         }
-        toCurrencyRatePos = ratingToListKey.indexOf("uSD")
-        fromCurrencyRatePos = ratingFromListKey.indexOf("eGP")
+        toCurrencyRatePos = ratingToListKey.indexOf("USD")
+        fromCurrencyRatePos = ratingFromListKey.indexOf("EGP")
     }
-
-
     fun swipeValues() {
         val temp = fromCurrencyRatePos
         fromCurrencyRatePos = toCurrencyRatePos
         toCurrencyRatePos = temp
     }
-
     fun convertAmountCurrency(amount: Double): Double {
         return convertCurrency(
             ratingFromListValue[fromCurrencyRatePos],

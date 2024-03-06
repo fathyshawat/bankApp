@@ -15,10 +15,24 @@
 <!--        <action-->
 <!--            android:id="@+id/openHistoryFragment"-->
 <!--            app:destination="@id/HistoryFragment" />-->
+        <action
+            android:id="@+id/action_converterFragment_to_HistoryFragment"
+            app:destination="@id/HistoryFragment" />
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/HistoryFragment"-->
-<!--        android:label="fragment_souhoola_v3_pending_requests" >-->
+    <fragment
+        android:id="@+id/HistoryFragment"
+        android:label="History"
+        android:name="com.bank.currency.presentation.HistoryFragment"
+        tools:layout="@layout/history_fragment">
 
-<!--    </fragment>-->
+
+        <argument
+            android:name="base"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="target"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>
