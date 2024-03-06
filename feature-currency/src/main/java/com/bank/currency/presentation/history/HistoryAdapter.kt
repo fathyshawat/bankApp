@@ -1,4 +1,4 @@
-package com.bank.currency.presentation
+package com.bank.currency.presentation.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bank.currency.databinding.ItemHistoryBinding
 import com.bank.currency.domain.entity.HistoryItem
 
-class HistoryAdapter() :
+class HistoryAdapter(private val target: String) :
     ListAdapter<HistoryItem, HistoryAdapter.HistoryViewHolder>(DIFF_CALLBACK) {
 
     companion object {
@@ -30,15 +30,16 @@ class HistoryAdapter() :
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         val historyItem = getItem(position)
-        holder.bind(historyItem)
+        holder.bind(target, historyItem)
     }
 
     class HistoryViewHolder(private val binding: ItemHistoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(historyItem: HistoryItem) {
+        fun bind(target: String, historyItem: HistoryItem) {
             binding.apply {
                 date.text = historyItem.date
                 currency.text = historyItem.amount.toString()
+                currencyType.text = target
             }
         }
     }

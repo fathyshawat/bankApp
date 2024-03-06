@@ -1,4 +1,4 @@
-package com.bank.currency.presentation
+package com.bank.currency.presentation.history
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope

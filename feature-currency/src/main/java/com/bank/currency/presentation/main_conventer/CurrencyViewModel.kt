@@ -1,7 +1,8 @@
-package com.bank.currency.presentation
+package com.bank.currency.presentation.main_conventer
 
 import androidx.lifecycle.viewModelScope
 import com.bank.currency.R
+import com.bank.currency.domain.entity.CurrencyItem
 import com.bank.currency.domain.entity.RatingModel
 import com.bank.currency.domain.usecases.RatingUseCase
 import com.bank.currency.network.Resource
@@ -30,7 +31,8 @@ class CurrencyViewModel @Inject constructor(
     var ratingFromListKey: MutableList<String> = mutableListOf()
     var ratingToListKey: MutableList<String> = mutableListOf()
     private var ratingToListValue: MutableList<Double> = mutableListOf()
-    private var ratingFromListValue: MutableList<Double> = mutableListOf()
+    var ratingFromListValue: MutableList<Double> = mutableListOf()
+    var mainCurrencies: MutableList<CurrencyItem?> = mutableListOf()
 
     var fromCurrencyRatePos: Int = -1
     var toCurrencyRatePos: Int = -1
@@ -59,7 +61,18 @@ class CurrencyViewModel @Inject constructor(
             ratingToListKey.add(it.first)
             ratingFromListValue.add(it.second)
             ratingToListValue.add(it.second)
+            if (it.first == "EGP" || it.first == "USD" ||
+                it.first == "EUR" || it.first == "KWD" ||
+                it.first == "SAR" || it.first == "BHD" ||
+                it.first == "OMR" || it.first == "GBP" ||
+                it.first == "QAR"
+            ) {
+                mainCurrencies.add(CurrencyItem(it.first, it.second))
+            }
+
+
         }
+
         toCurrencyRatePos = ratingToListKey.indexOf("USD")
         fromCurrencyRatePos = ratingFromListKey.indexOf("EGP")
     }
@@ -68,12 +81,12 @@ class CurrencyViewModel @Inject constructor(
         fromCurrencyRatePos = toCurrencyRatePos
         toCurrencyRatePos = temp
     }
+
     fun convertAmountCurrency(amount: Double): Double {
         return convertCurrency(
-            ratingFromListValue[fromCurrencyRatePos],
-            ratingToListValue[toCurrencyRatePos],
-            amount
+            ratingFromListValue[fromCurrencyRatePos], ratingToListValue[toCurrencyRatePos], amount
         )
     }
+
 
 }

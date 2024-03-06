@@ -1,9 +1,11 @@
 package com.bank.currency.utils
 
 import android.annotation.SuppressLint
+import android.util.Log
 import com.bank.currency.data.response.Rates
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import kotlin.math.log
 
 
 fun convertCurrency(sourceRate: Double, targetRate: Double, amount: Double = 1.00): Double {
@@ -31,8 +33,10 @@ fun getPreviousThreeDays(): List<String> {
     val sdf = SimpleDateFormat("yyyy-MM-dd")
     val formattedDates = mutableListOf<String>()
     for (i in 0..2) {
-        cal.add(Calendar.DAY_OF_YEAR, -i)
+        cal.add(Calendar.DAY_OF_YEAR, -1)
         formattedDates.add(sdf.format(cal.time))
+        Log.d("TAGDate", "getPreviousThreeDays: "+sdf.format(cal.time))
+
     }
 
     return formattedDates.toList()

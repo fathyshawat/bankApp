@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/converterFragment"
         android:label="converter_fragment"
-        android:name="com.bank.currency.presentation.ConverterCurrencyFragment"
+        android:name="com.bank.currency.presentation.main_conventer.ConverterCurrencyFragment"
         tools:layout="@layout/converter_fragment"
         >
 <!--        <action-->
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/HistoryFragment"
         android:label="History"
-        android:name="com.bank.currency.presentation.HistoryFragment"
+        android:name="com.bank.currency.presentation.history.HistoryFragment"
         tools:layout="@layout/history_fragment">
 
 
@@ -34,5 +34,14 @@
             android:name="target"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="currencies"
+            app:nullable="true"
+            app:argType="com.bank.currency.domain.entity.Currencies" />
+        <argument
+            android:name="baseRate"
+            app:argType="string"
+            app:nullable="true" />
+
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.bank.currency.presentation
+package com.bank.currency.presentation.main_conventer
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,7 @@ import android.widget.AdapterView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import com.bank.currency.databinding.ConverterFragmentBinding
+import com.bank.currency.domain.entity.Currencies
 import com.bank.currency.network.Resource
 import com.bank.curreny.resourceProvider.base.BaseFragment
 import com.bank.curreny.resourceProvider.extenstions.collect
@@ -44,7 +45,11 @@ class ConverterCurrencyFragment :
                 navigateSafe(
                     ConverterCurrencyFragmentDirections.actionConverterFragmentToHistoryFragment(
                         viewModel.ratingFromListKey[viewModel.fromCurrencyRatePos],
-                        viewModel.ratingToListKey[viewModel.toCurrencyRatePos]
+                        viewModel.ratingToListKey[viewModel.toCurrencyRatePos],
+                        Currencies(
+                            viewModel.mainCurrencies
+                        ),
+                        viewModel.ratingFromListValue[viewModel.fromCurrencyRatePos].toString()
                     )
                 )
             }
