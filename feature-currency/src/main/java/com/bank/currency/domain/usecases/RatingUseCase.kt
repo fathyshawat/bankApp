@@ -15,7 +15,7 @@ class RatingUseCase @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) :
     FlowUseCase<Unit, RatingModel?>(ioDispatcher) {
-    override fun execute(parameters: Unit):
+    public override fun execute(parameters: Unit):
             Flow<RatingModel?> = flow {
         emit(repository.getRates())
     }

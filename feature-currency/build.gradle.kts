@@ -42,6 +42,9 @@ android {
 
 dependencies {
 
+    testImplementation (libs.mockito)
+    testImplementation (libs.coroutinesTest)
+
     implementation(libs.coreKtx)
     implementation(libs.appcompat)
     implementation(libs.materialDesign)

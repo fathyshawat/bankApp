@@ -13,5 +13,4 @@ interface CurrencyServiceApi {
     @GET("{date}?access_key=${ACCESS_KEY}")
     suspend fun getHistoryRates(@Path("date") date: String): RatingResponse
 
-
 }

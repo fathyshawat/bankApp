@@ -35,8 +35,6 @@ fun getPreviousThreeDays(): List<String> {
     for (i in 0..2) {
         cal.add(Calendar.DAY_OF_YEAR, -1)
         formattedDates.add(sdf.format(cal.time))
-        Log.d("TAGDate", "getPreviousThreeDays: "+sdf.format(cal.time))
-
     }
 
     return formattedDates.toList()
